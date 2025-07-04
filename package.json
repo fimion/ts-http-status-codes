@@ -1,11 +1,11 @@
 {
-  "name": "package-name",
+  "name": "@fimion/ts-http-status-codes",
   "type": "module",
   "version": "0.0.0",
   "packageManager": "pnpm@10.11.0",
   "description": "",
   "license": "MIT",
-  "repository": "fimion/package-name",
+  "repository": "fimion/ts-http-status-codes",
   "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs"
@@ -51,7 +51,7 @@
     "vitest": "latest"
   },
   "resolutions": {
-    "package-name": "link:."
+    "@fimion/ts-http-status-codes": "link:."
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"

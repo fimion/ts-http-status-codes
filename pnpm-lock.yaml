@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  package-name: link:.
+  '@fimion/ts-http-status-codes': link:.
 
 importers:
 
@@ -50,7 +50,7 @@ importers:
 
   playground:
     dependencies:
-      package-name:
+      '@fimion/ts-http-status-codes':
         specifier: link:..
         version: link:..
 

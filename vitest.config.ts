@@ -4,7 +4,7 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   resolve: {
     alias: {
-      "package-name": fileURLToPath(
+      "@fimion/ts-http-status-codes": fileURLToPath(
         new URL("./src/index.ts", import.meta.url).href,
       ),
     },

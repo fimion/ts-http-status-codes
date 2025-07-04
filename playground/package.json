@@ -5,6 +5,6 @@
     "dev": "node index.js"
   },
   "dependencies": {
-    "package-name": "latest"
+    "@fimion/ts-http-status-codes": "latest"
   }
 }
