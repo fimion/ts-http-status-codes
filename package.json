@@ -24,7 +24,7 @@
   ],
   "scripts": {
     "build": "unbuild",
-    "dev": "vitest dev",
+    "dev": "vitest dev --typecheck",
     "lint": "eslint . --fix",
     "prepare": "simple-git-hooks",
     "prepack": "pnpm build",
