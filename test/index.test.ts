@@ -4,7 +4,7 @@ import {
   isStrict5xx,
   is5xx,
   CODES_5XX,
-  type LOOSE_SERVER_ERROR_CODES,
+  type LOOSE_TYPE_CODE_5XX,
 } from "../src";
 
 describe("@fimion/ts-http-status-codes", () => {
@@ -33,6 +33,6 @@ describe("@fimion/ts-http-status-codes", () => {
   });
 
   it("LOOSE_SERVER_ERROR_CODES are correctly typed", () => {
-    assertType<LOOSE_SERVER_ERROR_CODES>(CODES_5XX.INTERNAL_SERVER_ERROR);
+    assertType<LOOSE_TYPE_CODE_5XX>(CODES_5XX.INTERNAL_SERVER_ERROR);
   });
 });
