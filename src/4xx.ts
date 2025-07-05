@@ -106,7 +106,7 @@ export type LOOSE_TYPE_HTTP_CODE_4XX = NumericRange<
   499
 >;
 
-export function is4xx(value: unknown): value is LOOSE_TYPE_HTTP_CODE_4XX {
+export function isLoose4xx(value: unknown): value is LOOSE_TYPE_HTTP_CODE_4XX {
   if (typeof value !== "number") return false;
   if (!Number.isInteger(value)) return false;
   return value >= 400 && value <= 499;

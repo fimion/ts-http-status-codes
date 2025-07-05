@@ -217,7 +217,7 @@ export type LOOSE_TYPE_HTTP_CODE_2XX = NumericRange<
   299
 >;
 
-export function is2xx(value: unknown): value is LOOSE_TYPE_HTTP_CODE_2XX {
+export function isLoose2xx(value: unknown): value is LOOSE_TYPE_HTTP_CODE_2XX {
   if (typeof value !== "number") return false;
   if (!Number.isInteger(value)) return false;
   return value >= 200 && value <= 299;
