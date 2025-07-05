@@ -61,41 +61,102 @@ export type TYPE_HTTP_CODE_3XX =
  */
 export const HTTP_CODES_3XX = {
   /**
+   * ## [15.4.1.](https://httpwg.org/specs/rfc9110.html#rfc.section.15.4.1) [300 Multiple Choices](https://httpwg.org/specs/rfc9110.html#status.300)
    *
+   * The 300 (Multiple Choices) status code indicates that the [target resource](https://httpwg.org/specs/rfc9110.html#target.resource) has more than one representation, each with its own more specific identifier, and information about the alternatives is being provided so that the user (or user agent) can select a preferred representation by redirecting its request to one or more of those identifiers. In other words, the server desires that the user agent engage in reactive negotiation to select the most appropriate representation(s) for its needs ([Section 12](https://httpwg.org/specs/rfc9110.html#content.negotiation "Content Negotiation")).
+   *
+   * If the server has a preferred choice, the server _SHOULD_ generate a [Location](https://httpwg.org/specs/rfc9110.html#field.location) header field containing a preferred choice's URI reference. The user agent _MAY_ use the Location field value for automatic redirection.
+   *
+   * For request methods other than HEAD, the server _SHOULD_ generate content in the 300 response containing a list of representation metadata and URI reference(s) from which the user or user agent can choose the one most preferred. The user agent _MAY_ make a selection from that list automatically if it understands the provided media type. A specific format for automatic selection is not defined by this specification because HTTP tries to remain orthogonal to the definition of its content. In practice, the representation is provided in some easily parsed format believed to be acceptable to the user agent, as determined by shared design or content negotiation, or in some commonly accepted hypertext format.
+   *
+   * A 300 response is heuristically cacheable; i.e., unless otherwise indicated by the method definition or explicit cache controls (see [Section 4.2.2](https://httpwg.org/specs/rfc9111.html#heuristic.freshness "Calculating Heuristic Freshness") of [[CACHING]](https://httpwg.org/specs/rfc9110.html#CACHING)).
+   *
+   * **Note:** The original proposal for the 300 status code defined the URI header field as providing a list of alternative representations, such that it would be usable for 200, 300, and 406 responses and be transferred in responses to the HEAD method. However, lack of deployment and disagreement over syntax led to both URI and Alternates (a subsequent proposal) being dropped from this specification. It is possible to communicate the list as a Link header field value [[RFC8288]](https://httpwg.org/specs/rfc9110.html#RFC8288) whose members have a relationship of "alternate", though deployment is a chicken-and-egg problem.
    */
   MULTIPLE_CHOICES: 300,
   /**
+   * ## [15.4.2.](https://httpwg.org/specs/rfc9110.html#rfc.section.15.4.2) [301 Moved Permanently](https://httpwg.org/specs/rfc9110.html#status.301)
    *
+   * The 301 (Moved Permanently) status code indicates that the [target resource](https://httpwg.org/specs/rfc9110.html#target.resource) has been assigned a new permanent URI and any future references to this resource ought to use one of the enclosed URIs. The server is suggesting that a user agent with link-editing capability can permanently replace references to the target URI with one of the new references sent by the server. However, this suggestion is usually ignored unless the user agent is actively editing references (e.g., engaged in authoring content), the connection is secured, and the origin server is a trusted authority for the content being edited.
+   *
+   * The server _SHOULD_ generate a [Location](https://httpwg.org/specs/rfc9110.html#field.location) header field in the response containing a preferred URI reference for the new permanent URI. The user agent _MAY_ use the Location field value for automatic redirection. The server's response content usually contains a short hypertext note with a hyperlink to the new URI(s).
+   *
+   * **Note:** For historical reasons, a user agent _MAY_ change the request method from POST to GET for the subsequent request. If this behavior is undesired, the [308 (Permanent Redirect)](https://httpwg.org/specs/rfc9110.html#status.308) status code can be used instead.
+   *
+   * A 301 response is heuristically cacheable; i.e., unless otherwise indicated by the method definition or explicit cache controls (see [Section 4.2.2](https://httpwg.org/specs/rfc9111.html#heuristic.freshness "Calculating Heuristic Freshness") of [[CACHING]](https://httpwg.org/specs/rfc9110.html#CACHING)).
    */
   MOVED_PERMANENTLY: 301,
   /**
+   * ## [15.4.3.](https://httpwg.org/specs/rfc9110.html#rfc.section.15.4.3) [302 Found](https://httpwg.org/specs/rfc9110.html#status.302)
    *
+   * The 302 (Found) status code indicates that the target resource resides temporarily under a different URI. Since the redirection might be altered on occasion, the client ought to continue to use the target URI for future requests.
+   *
+   * The server _SHOULD_ generate a [Location](https://httpwg.org/specs/rfc9110.html#field.location) header field in the response containing a URI reference for the different URI. The user agent _MAY_ use the Location field value for automatic redirection. The server's response content usually contains a short hypertext note with a hyperlink to the different URI(s).
+   *
+   * **Note:** For historical reasons, a user agent _MAY_ change the request method from POST to GET for the subsequent request. If this behavior is undesired, the [307 (Temporary Redirect)](https://httpwg.org/specs/rfc9110.html#status.307) status code can be used instead.
    */
   FOUND: 302,
   /**
+   * ## [15.4.4.](https://httpwg.org/specs/rfc9110.html#rfc.section.15.4.4) [303 See Other](https://httpwg.org/specs/rfc9110.html#status.303)
    *
+   * The 303 (See Other) status code indicates that the server is redirecting the user agent to a different resource, as indicated by a URI in the [Location](https://httpwg.org/specs/rfc9110.html#field.location) header field, which is intended to provide an indirect response to the original request. A user agent can perform a retrieval request targeting that URI (a GET or HEAD request if using HTTP), which might also be redirected, and present the eventual result as an answer to the original request. Note that the new URI in the Location header field is not considered equivalent to the target URI.
+   *
+   * This status code is applicable to any HTTP method. It is primarily used to allow the output of a POST action to redirect the user agent to a different resource, since doing so provides the information corresponding to the POST response as a resource that can be separately identified, bookmarked, and cached.
+   *
+   * A 303 response to a GET request indicates that the origin server does not have a representation of the [target resource](https://httpwg.org/specs/rfc9110.html#target.resource)that can be transferred by the server over HTTP. However, the [Location](https://httpwg.org/specs/rfc9110.html#field.location) field value refers to a resource that is descriptive of the target resource, such that making a retrieval request on that other resource might result in a representation that is useful to recipients without implying that it represents the original target resource. Note that answers to the questions of what can be represented, what representations are adequate, and what might be a useful description are outside the scope of HTTP.
+   *
+   * Except for responses to a HEAD request, the representation of a 303 response ought to contain a short hypertext note with a hyperlink to the same URI reference provided in the [Location](https://httpwg.org/specs/rfc9110.html#field.location) header field.
    */
   SEE_OTHER: 303,
   /**
+   * ## [15.4.5.](https://httpwg.org/specs/rfc9110.html#rfc.section.15.4.5) [304 Not Modified](https://httpwg.org/specs/rfc9110.html#status.304)
    *
+   * The 304 (Not Modified) status code indicates that a conditional GET or HEAD request has been received and would have resulted in a [200 (OK)](https://httpwg.org/specs/rfc9110.html#status.200) response if it were not for the fact that the condition evaluated to false. In other words, there is no need for the server to transfer a representation of the target resource because the request indicates that the client, which made the request conditional, already has a valid representation; the server is therefore redirecting the client to make use of that stored representation as if it were the content of a [200 (OK)](https://httpwg.org/specs/rfc9110.html#status.200) response.
+   *
+   * The server generating a 304 response _MUST_ generate any of the following header fields that would have been sent in a [200 (OK)](https://httpwg.org/specs/rfc9110.html#status.200) response to the same request:
+   *
+   * - [Content-Location](https://httpwg.org/specs/rfc9110.html#field.content-location), [Date](https://httpwg.org/specs/rfc9110.html#field.date), [ETag](https://httpwg.org/specs/rfc9110.html#field.etag), and [Vary](https://httpwg.org/specs/rfc9110.html#field.vary)
+   * - [Cache-Control](https://httpwg.org/specs/rfc9111.html#field.cache-control) and [Expires](https://httpwg.org/specs/rfc9111.html#field.expires) (see [[CACHING]](https://httpwg.org/specs/rfc9110.html#CACHING))
+   *
+   * Since the goal of a 304 response is to minimize information transfer when the recipient already has one or more cached representations, a sender _SHOULD NOT_ generate representation metadata other than the above listed fields unless said metadata exists for the purpose of guiding cache updates (e.g., [Last-Modified](https://httpwg.org/specs/rfc9110.html#field.last-modified) might be useful if the response does not have an [ETag](https://httpwg.org/specs/rfc9110.html#field.etag) field).
+   *
+   * Requirements on a cache that receives a 304 response are defined in [Section 4.3.4](https://httpwg.org/specs/rfc9111.html#freshening.responses "Freshening Stored Responses upon Validation") of [[CACHING]](https://httpwg.org/specs/rfc9110.html#CACHING). If the conditional request originated with an outbound client, such as a user agent with its own cache sending a conditional GET to a shared proxy, then the proxy _SHOULD_ forward the 304 response to that client.
+   *
+   * A 304 response is terminated by the end of the header section; it cannot contain content or trailers.
    */
   NOT_MODIFIED: 304,
   /**
+   * ## [15.4.6.](https://httpwg.org/specs/rfc9110.html#rfc.section.15.4.6) [305 Use Proxy](https://httpwg.org/specs/rfc9110.html#status.305)
    *
+   * The 305 (Use Proxy) status code was defined in a previous version of this specification and is now deprecated ([Appendix B](https://www.rfc-editor.org/rfc/rfc7231.html#appendix-B) of [[RFC7231]](https://httpwg.org/specs/rfc9110.html#RFC7231)).
    *
    * @deprecated
    */
   USE_PROXY: 305,
   /**
+   * ## [15.4.7.](https://httpwg.org/specs/rfc9110.html#rfc.section.15.4.7) [306 (Unused)](https://httpwg.org/specs/rfc9110.html#status.306)
    *
+   * The 306 status code was defined in a previous version of this specification, is no longer used, and the code is reserved.
    */
   UNUSED_306: 306,
   /**
+   * ## [15.4.8.](https://httpwg.org/specs/rfc9110.html#rfc.section.15.4.8) [307 Temporary Redirect](https://httpwg.org/specs/rfc9110.html#status.307)
    *
+   * The 307 (Temporary Redirect) status code indicates that the [target resource](https://httpwg.org/specs/rfc9110.html#target.resource) resides temporarily under a different URI and the user agent _MUST NOT_ change the request method if it performs an automatic redirection to that URI. Since the redirection can change over time, the client ought to continue using the original target URI for future requests.
+   *
+   * The server _SHOULD_ generate a [Location](https://httpwg.org/specs/rfc9110.html#field.location) header field in the response containing a URI reference for the different URI. The user agent _MAY_ use the Location field value for automatic redirection. The server's response content usually contains a short hypertext note with a hyperlink to the different URI(s).
    */
   TEMPORARY_REDIRECT: 307,
   /**
+   * ## [15.4.9.](https://httpwg.org/specs/rfc9110.html#rfc.section.15.4.9) [308 Permanent Redirect](https://httpwg.org/specs/rfc9110.html#status.308)
    *
+   * The 308 (Permanent Redirect) status code indicates that the [target resource](https://httpwg.org/specs/rfc9110.html#target.resource) has been assigned a new permanent URI and any future references to this resource ought to use one of the enclosed URIs. The server is suggesting that a user agent with link-editing capability can permanently replace references to the target URI with one of the new references sent by the server. However, this suggestion is usually ignored unless the user agent is actively editing references (e.g., engaged in authoring content), the connection is secured, and the origin server is a trusted authority for the content being edited.
+   *
+   * The server _SHOULD_ generate a [Location](https://httpwg.org/specs/rfc9110.html#field.location) header field in the response containing a preferred URI reference for the new permanent URI. The user agent _MAY_ use the Location field value for automatic redirection. The server's response content usually contains a short hypertext note with a hyperlink to the new URI(s).
+   *
+   * A 308 response is heuristically cacheable; i.e., unless otherwise indicated by the method definition or explicit cache controls (see [Section 4.2.2](https://httpwg.org/specs/rfc9111.html#heuristic.freshness "Calculating Heuristic Freshness") of [[CACHING]](https://httpwg.org/specs/rfc9110.html#CACHING)).
+   *
+   * **Note:** This status code is much younger (June 2014) than its sibling codes and thus might not be recognized everywhere. See [Section 4](https://www.rfc-editor.org/rfc/rfc7538.html#section-4) of [[RFC7538]](https://httpwg.org/specs/rfc9110.html#RFC7538) for deployment considerations.
    */
   PERMANENT_REDIRECT: 308,
 } as const;

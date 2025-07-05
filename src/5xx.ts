@@ -13,6 +13,7 @@ export type TYPE_HTTP_CODE_5XX =
   | 504
   /** "HTTP Version Not Supported" */
   | 505;
+
 /**
  * # [15.6. Server Error 5xx](https://httpwg.org/specs/rfc9110.html#status.5xx)
  * The 5xx (Server Error) class of status code indicates that the server is aware
