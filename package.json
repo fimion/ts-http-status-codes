@@ -1,5 +1,6 @@
 {
   "name": "@fimion/ts-http-status-codes",
+  "private": false,
   "type": "module",
   "version": "1.0.0-beta.1",
   "packageManager": "pnpm@10.12.4",
