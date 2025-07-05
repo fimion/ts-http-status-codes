@@ -1,10 +1,18 @@
 import { defineBuildConfig } from "unbuild";
 
-export default defineBuildConfig({
-  declaration: "node16",
+const config = defineBuildConfig({
+  declaration: "compatible",
+  clean: true,
   rollup: {
+    esbuild: {
+      minifyWhitespace: true,
+    },
     dts: {
       respectExternal: false,
     },
   },
 });
+
+console.log(config);
+
+export default config;

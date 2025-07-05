@@ -1,3 +1,6 @@
 import ESLintTSConfig from "@fimion/lint-config/eslint-ts";
 
-export default ESLintTSConfig;
+/**
+ * @type {import("eslint").ESLint.Options[]}
+ */
+export default [...ESLintTSConfig];

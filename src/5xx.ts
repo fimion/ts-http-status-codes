@@ -1,6 +1,6 @@
 import type { CreateArrayWithLengthX, NumericRange } from "./common.ts";
 
-export type TYPE_CODE_5XX =
+export type TYPE_HTTP_CODE_5XX =
   /** Internal Server Error */
   | 500
   /** Not Implemented */
@@ -23,7 +23,7 @@ export type TYPE_CODE_5XX =
  * representation to the user. These status codes are applicable to any request
  * method.
  */
-export const CODES_5XX = {
+export const HTTP_CODES_5XX = {
   /**
    * ## [15.6.1. 500 Internal Server Error](https://httpwg.org/specs/rfc9110.html#status.500)
    * The 500 (Internal Server Error) status code indicates that the server
@@ -81,7 +81,7 @@ export const CODES_5XX = {
   HTTP_VERSION_NOT_SUPPORTED: 505,
 } as const;
 
-export const STATUSES_5XX = {
+export const HTTP_STATUSES_5XX = {
   500: "INTERNAL_SERVER_ERROR",
   501: "NOT_IMPLEMENTED",
   502: "BAD_GATEWAY",
@@ -90,17 +90,17 @@ export const STATUSES_5XX = {
   505: "HTTP_VERSION_NOT_SUPPORTED",
 } as const;
 
-export function isStrict5xx(value: unknown): value is TYPE_CODE_5XX {
+export function isStrict5xx(value: unknown): value is TYPE_HTTP_CODE_5XX {
   if (typeof value !== "number") return false;
-  return value in STATUSES_5XX;
+  return value in HTTP_STATUSES_5XX;
 }
 
-export type LOOSE_TYPE_CODE_5XX = NumericRange<
+export type LOOSE_TYPE_HTTP_CODE_5XX = NumericRange<
   CreateArrayWithLengthX<500>,
   599
 >;
 
-export function is5xx(value: unknown): value is LOOSE_TYPE_CODE_5XX {
+export function is5xx(value: unknown): value is LOOSE_TYPE_HTTP_CODE_5XX {
   if (typeof value !== "number") return false;
   if (!Number.isInteger(value)) return false;
   return value >= 500 && value <= 599;

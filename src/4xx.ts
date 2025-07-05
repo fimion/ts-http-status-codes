@@ -1,6 +1,6 @@
 import type { CreateArrayWithLengthX, NumericRange } from "./common.ts";
 
-export type TYPE_CODE_4XX =
+export type TYPE_HTTP_CODE_4XX =
   /** Bad Request */
   | 400
   /** Unauthorized */
@@ -37,7 +37,7 @@ export type TYPE_CODE_4XX =
   | 416
   /** Expectation Failed */
   | 417
-  /** (Unused) */
+  /** @deprecated (Unused) 418 */
   | 418
   /** Misdirected Request */
   | 421
@@ -46,7 +46,7 @@ export type TYPE_CODE_4XX =
   /** Upgrade Required */
   | 426;
 
-export const CODES_4XX = {
+export const HTTP_CODES_4XX = {
   BAD_REQUEST: 400,
   UNAUTHORIZED: 401,
   PAYMENT_REQUIRED: 402,
@@ -65,13 +65,13 @@ export const CODES_4XX = {
   UNSUPPORTED_MEDIA_TYPE: 415,
   RANGE_NOT_SATISFIABLE: 416,
   EXPECTATION_FAILED: 417,
-  UNUSED: 418,
+  UNUSED_418: 418,
   MISDIRECTED_REQUEST: 421,
   UNPROCESSABLE_CONTENT: 422,
   UPGRADE_REQUIRED: 426,
 } as const;
 
-export const STATUSES_4XX = {
+export const HTTP_STATUSES_4XX = {
   400: "BAD_REQUEST",
   401: "UNAUTHORIZED",
   402: "PAYMENT_REQUIRED",
@@ -90,23 +90,23 @@ export const STATUSES_4XX = {
   415: "UNSUPPORTED_MEDIA_TYPE",
   416: "RANGE_NOT_SATISFIABLE",
   417: "EXPECTATION_FAILED",
-  418: "UNUSED",
+  418: "UNUSED_418",
   421: "MISDIRECTED_REQUEST",
   422: "UNPROCESSABLE_CONTENT",
   426: "UPGRADE_REQUIRED",
 } as const;
 
-export function isStrict4xx(value: unknown): value is TYPE_CODE_4XX {
+export function isStrict4xx(value: unknown): value is TYPE_HTTP_CODE_4XX {
   if (typeof value !== "number") return false;
-  return value in STATUSES_4XX;
+  return value in HTTP_STATUSES_4XX;
 }
 
-export type LOOSE_TYPE_CODE_4XX = NumericRange<
+export type LOOSE_TYPE_HTTP_CODE_4XX = NumericRange<
   CreateArrayWithLengthX<400>,
   499
 >;
 
-export function is4xx(value: unknown): value is LOOSE_TYPE_CODE_4XX {
+export function is4xx(value: unknown): value is LOOSE_TYPE_HTTP_CODE_4XX {
   if (typeof value !== "number") return false;
   if (!Number.isInteger(value)) return false;
   return value >= 400 && value <= 499;
