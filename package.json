@@ -29,7 +29,7 @@
     "prepare": "simple-git-hooks",
     "prepack": "pnpm build",
     "prepublishOnly": "pnpm lint && pnpm test",
-    "release": "bumpp && pnpm publish",
+    "release": "bumpp && pnpm publish --no-git-checks",
     "test": "pnpm test:unit && pnpm test:types",
     "test:unit": "vitest",
     "test:knip": "knip",
