@@ -1,14 +1,3 @@
-export type CreateArrayWithLengthX<
-  LENGTH extends number,
-  ACC extends unknown[] = [],
-> = ACC["length"] extends LENGTH
-  ? ACC
-  : CreateArrayWithLengthX<LENGTH, [...ACC, 1]>;
-
-export type NumericRange<
-  START_ARR extends number[],
-  END extends number,
-  ACC extends number = never,
-> = START_ARR["length"] extends END
-  ? ACC | END
-  : NumericRange<[...START_ARR, 1], END, ACC | START_ARR["length"]>;
+type Digit = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+export type DigitXX<T extends Digit> =
+  `${T}${Digit}${Digit}` extends `${infer N extends number}` ? N : never;

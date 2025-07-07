@@ -1,4 +1,4 @@
-import type { CreateArrayWithLengthX, NumericRange } from "./common.ts";
+import type { DigitXX } from "./common.ts";
 
 export type TYPE_HTTP_CODE_3XX =
   /** Multiple Choices */
@@ -178,10 +178,7 @@ export function isStrict3xx(value: unknown): value is TYPE_HTTP_CODE_3XX {
   return value in HTTP_STATUSES_3XX;
 }
 
-export type LOOSE_TYPE_HTTP_CODE_3XX = NumericRange<
-  CreateArrayWithLengthX<300>,
-  399
->;
+export type LOOSE_TYPE_HTTP_CODE_3XX = DigitXX<3>;
 
 export function isLoose3xx(value: unknown): value is LOOSE_TYPE_HTTP_CODE_3XX {
   if (typeof value !== "number") return false;

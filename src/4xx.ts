@@ -1,4 +1,4 @@
-import type { CreateArrayWithLengthX, NumericRange } from "./common.ts";
+import type { DigitXX } from "./common.ts";
 
 export type TYPE_HTTP_CODE_4XX =
   /** Bad Request */
@@ -275,10 +275,7 @@ export function isStrict4xx(value: unknown): value is TYPE_HTTP_CODE_4XX {
   return value in HTTP_STATUSES_4XX;
 }
 
-export type LOOSE_TYPE_HTTP_CODE_4XX = NumericRange<
-  CreateArrayWithLengthX<400>,
-  499
->;
+export type LOOSE_TYPE_HTTP_CODE_4XX = DigitXX<4>;
 
 export function isLoose4xx(value: unknown): value is LOOSE_TYPE_HTTP_CODE_4XX {
   if (typeof value !== "number") return false;

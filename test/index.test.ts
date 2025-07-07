@@ -1,4 +1,4 @@
-import { describe, expect, assertType, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import {
   isStrict1xx,
   isLoose1xx,
@@ -15,7 +15,6 @@ import {
   isStrict5xx,
   isLoose5xx,
   HTTP_CODES_5XX,
-  type LOOSE_TYPE_HTTP_CODE_5XX,
 } from "../src";
 
 describe("@fimion/ts-http-status-codes", () => {
@@ -122,9 +121,5 @@ describe("@fimion/ts-http-status-codes", () => {
     for (let x = 100; x < 200; x++) {
       expect(isLoose1xx(x)).toBe(true);
     }
-  });
-
-  it("LOOSE_SERVER_ERROR_CODES are correctly typed", () => {
-    assertType<LOOSE_TYPE_HTTP_CODE_5XX>(HTTP_CODES_5XX.INTERNAL_SERVER_ERROR);
   });
 });

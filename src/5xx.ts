@@ -1,4 +1,4 @@
-import type { CreateArrayWithLengthX, NumericRange } from "./common.ts";
+import type { DigitXX } from "./common.ts";
 
 export type TYPE_HTTP_CODE_5XX =
   /** Internal Server Error */
@@ -96,10 +96,7 @@ export function isStrict5xx(value: unknown): value is TYPE_HTTP_CODE_5XX {
   return value in HTTP_STATUSES_5XX;
 }
 
-export type LOOSE_TYPE_HTTP_CODE_5XX = NumericRange<
-  CreateArrayWithLengthX<500>,
-  599
->;
+export type LOOSE_TYPE_HTTP_CODE_5XX = DigitXX<5>;
 
 export function isLoose5xx(value: unknown): value is LOOSE_TYPE_HTTP_CODE_5XX {
   if (typeof value !== "number") return false;
