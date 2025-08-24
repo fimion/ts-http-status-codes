@@ -154,7 +154,7 @@ import type {
 
 const GOOD: LOOSE_TYPE_HTTP_CODE_2XX = 200;
 const ALSO_GOOD: LOOSE_TYPE_HTTP_CODE_2XX = 299;
-const STILL_BAD: TYPE_HTTP_CODE_2XX = 400; // Will result in a type error
+const STILL_BAD: LOOSE_TYPE_HTTP_CODE_2XX = 400; // Will result in a type error
 ```
 
 ## 💻 Development
