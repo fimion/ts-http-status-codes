@@ -59,11 +59,11 @@
     "@fimion/ts-http-status-codes": "link:."
   },
   "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
+    "pre-commit": "pnpm lint-staged"
   },
   "lint-staged": {
     "*.{js,ts,mjs,cjs,json,.*rc}": [
-      "npx eslint --fix"
+      "pnpm eslint --fix"
     ]
   }
 }
