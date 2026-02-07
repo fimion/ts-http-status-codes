@@ -42,7 +42,6 @@
     "test:types": "tsc --noEmit"
   },
   "devDependencies": {
-    "@eslint/js": "latest",
     "@fimion/lint-config": "latest",
     "@vitest/coverage-v8": "latest",
     "bumpp": "latest",

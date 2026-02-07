@@ -11,12 +11,9 @@ importers:
 
   .:
     devDependencies:
-      '@eslint/js':
-        specifier: latest
-        version: 10.0.1(eslint@10.0.0(jiti@2.6.1))
       '@fimion/lint-config':
         specifier: latest
-        version: 1.0.1(eslint-config-prettier@10.1.8(eslint@10.0.0(jiti@2.6.1)))(eslint-plugin-prettier@5.5.5(eslint-config-prettier@10.1.8(eslint@10.0.0(jiti@2.6.1)))(eslint@10.0.0(jiti@2.6.1))(prettier@3.8.1))(eslint-plugin-vue@10.7.0(@typescript-eslint/parser@8.54.0(eslint@10.0.0(jiti@2.6.1))(typescript@5.9.3))(eslint@10.0.0(jiti@2.6.1))(vue-eslint-parser@10.2.0(eslint@10.0.0(jiti@2.6.1))))(eslint@10.0.0(jiti@2.6.1))(prettier@3.8.1)(typescript-eslint@8.54.0(eslint@10.0.0(jiti@2.6.1))(typescript@5.9.3))
+        version: 1.0.2(@eslint/js@10.0.1(eslint@10.0.0(jiti@2.6.1)))(eslint-config-prettier@10.1.8(eslint@10.0.0(jiti@2.6.1)))(eslint-plugin-prettier@5.5.5(eslint-config-prettier@10.1.8(eslint@10.0.0(jiti@2.6.1)))(eslint@10.0.0(jiti@2.6.1))(prettier@3.8.1))(eslint-plugin-vue@10.7.0(@typescript-eslint/parser@8.54.0(eslint@10.0.0(jiti@2.6.1))(typescript@5.9.3))(eslint@10.0.0(jiti@2.6.1))(vue-eslint-parser@10.2.0(eslint@10.0.0(jiti@2.6.1))))(eslint@10.0.0(jiti@2.6.1))(prettier@3.8.1)(typescript-eslint@8.54.0(eslint@10.0.0(jiti@2.6.1))(typescript@5.9.3))
       '@vitest/coverage-v8':
         specifier: latest
         version: 4.0.18(vitest@4.0.18(@types/node@25.2.1)(jiti@2.6.1)(yaml@2.8.2))
@@ -444,9 +441,10 @@ packages:
     resolution: {integrity: sha512-bIZEUzOI1jkhviX2cp5vNyXQc6olzb2ohewQubuYlMXZ2Q/XjBO0x0XhGPvc9fjSIiUN0vw+0hq53BJ4eQSJKQ==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
 
-  '@fimion/lint-config@1.0.1':
-    resolution: {integrity: sha512-TCdHhk/Sgh4H9HAU/PfeFL0W7B8i1Gh2SPLICYSbD5/NR1nyRriMQ2s6ep1r6OJpmmLz3N1KpWsS5LmP1quGkA==}
+  '@fimion/lint-config@1.0.2':
+    resolution: {integrity: sha512-AnQQ1RusfEmpltV1If/g/mgwbTHLZwfk9slRnR3T/WsNZJuTXM5Stfrei38AaQiLm1TKfGm4ClvEoPX0FZGLEQ==}
     peerDependencies:
+      '@eslint/js': '>= 9'
       eslint: '>= 9'
       eslint-config-prettier: '>= 9'
       eslint-plugin-prettier: '>= 5'
@@ -2876,8 +2874,9 @@ snapshots:
       '@eslint/core': 1.1.0
       levn: 0.4.1
 
-  '@fimion/lint-config@1.0.1(eslint-config-prettier@10.1.8(eslint@10.0.0(jiti@2.6.1)))(eslint-plugin-prettier@5.5.5(eslint-config-prettier@10.1.8(eslint@10.0.0(jiti@2.6.1)))(eslint@10.0.0(jiti@2.6.1))(prettier@3.8.1))(eslint-plugin-vue@10.7.0(@typescript-eslint/parser@8.54.0(eslint@10.0.0(jiti@2.6.1))(typescript@5.9.3))(eslint@10.0.0(jiti@2.6.1))(vue-eslint-parser@10.2.0(eslint@10.0.0(jiti@2.6.1))))(eslint@10.0.0(jiti@2.6.1))(prettier@3.8.1)(typescript-eslint@8.54.0(eslint@10.0.0(jiti@2.6.1))(typescript@5.9.3))':
+  '@fimion/lint-config@1.0.2(@eslint/js@10.0.1(eslint@10.0.0(jiti@2.6.1)))(eslint-config-prettier@10.1.8(eslint@10.0.0(jiti@2.6.1)))(eslint-plugin-prettier@5.5.5(eslint-config-prettier@10.1.8(eslint@10.0.0(jiti@2.6.1)))(eslint@10.0.0(jiti@2.6.1))(prettier@3.8.1))(eslint-plugin-vue@10.7.0(@typescript-eslint/parser@8.54.0(eslint@10.0.0(jiti@2.6.1))(typescript@5.9.3))(eslint@10.0.0(jiti@2.6.1))(vue-eslint-parser@10.2.0(eslint@10.0.0(jiti@2.6.1))))(eslint@10.0.0(jiti@2.6.1))(prettier@3.8.1)(typescript-eslint@8.54.0(eslint@10.0.0(jiti@2.6.1))(typescript@5.9.3))':
     dependencies:
+      '@eslint/js': 10.0.1(eslint@10.0.0(jiti@2.6.1))
       eslint: 10.0.0(jiti@2.6.1)
       eslint-config-prettier: 10.1.8(eslint@10.0.0(jiti@2.6.1))
       eslint-plugin-prettier: 5.5.5(eslint-config-prettier@10.1.8(eslint@10.0.0(jiti@2.6.1)))(eslint@10.0.0(jiti@2.6.1))(prettier@3.8.1)
